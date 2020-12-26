@@ -6,19 +6,14 @@ import './App.css';
 import Title from './components/Title/Title';
 
 
-
 class App extends Component {
+
+  state = { version: '1.0'}
 
   // イベントハンドラー
   onClickHandler = () => {
-    // 「Hello World」のh2タグをここで取得
-    let title = document.getElementById('versionStatement');
-    // 「upgrade」のpタグをここで取得
-    let upgradeButton = document.getElementById('upgradeButton');
-    // 取得したh２タグのテキストを変更
-    title.textContent = "Hello World 4.0";
-    // 取得したpタグを非表示にする。
-    upgradeButton.style.display = "none";
+      let nextVersion = parseInt(this.state.version, 10) + 1
+      this.setState({ version: nextVersion.toFixed(1)})
   }
 
   render() {
@@ -27,10 +22,13 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <Title
-            title="Hello World 3.0"
             titleStyle={{color: 'orange'}}
-            onClick={this.onClickHandler}
-          />
+            onClick={this.onClickHandler}>
+            Hello World
+            <span id="versionCounter" style={{borderBottom: '1px solid orange'}}>
+              {this.state.version}
+            </span>
+          </Title>
         </header>
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
