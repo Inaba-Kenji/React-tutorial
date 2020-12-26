@@ -3,7 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 
 // Title.jsをインポートする。
-import Title from './components/Title';
+import Title from './components/Title/Title';
+
+
 
 class App extends Component {
 
